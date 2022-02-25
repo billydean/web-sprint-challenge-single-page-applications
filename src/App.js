@@ -1,10 +1,20 @@
 import React from "react";
+import Header from './components/Header';
+import Banner from './components/Banner';
+import BoxContainer from './components/BoxContainer';
+import Footer from './components/Footer';
+import OrderConfirm from './components/OrderConfirm';
+import PizzaForm from './components/PizzaForm';
 
 const App = () => {
   return (
     <>
-      <h1>Lambda Eats</h1>
-      <p>You can remove this code and create your own header</p>
+    <Header />
+    <Banner />
+    <BoxContainer />
+    <PizzaForm />
+    <OrderConfirm />
+    <Footer />
     </>
   );
 };
