@@ -54,9 +54,15 @@ const App = () => {
       .catch(err => console.error(err))
   }
   // validation, once I have yup and schema in order, TBD
-
+  const validatePizza = (name, value) => {
+    yup.reach(schema, name)
+      .validate(value)
+      .then(()=> setErrors({ ...errors, [name]:''}))
+      .catch(err => setErrors({ ...errors, [name]: err.errors[0]}))
+  }
   //changing form values
   const updateForm = (name, value) => {
+    validatePizza(name,value);
     setFormValues({
       ...formValues,
       [name]: value
@@ -76,7 +82,7 @@ const App = () => {
       bellpeppers: formValues.bellpeppers,
       pineapple: formValues.pineapple,
       spinach: formValues.spinach,
-      morecheese: formValues,morecheese,
+      morecheese: formValues.morecheese,
       special: formValues.special.trim(),
       sauce: formValues.sauce,
       glutensub: formValues.glutensub,
@@ -86,8 +92,8 @@ const App = () => {
   }
   //side effect hook for toggling button's disabled status
   useEffect(()=>{
-
-  },[])
+    schema.isValid(formValues).then(valid => setDisabled(!valid))
+  },[formValues])
 
 
   return (
@@ -95,7 +101,13 @@ const App = () => {
     <Header />
     <Banner />
     <BoxContainer />
-    <PizzaForm />
+    <PizzaForm 
+      values={ formValues }
+      change={ updateForm }
+      submit={ stageOrder }
+      disabled={ disabled }
+      errors={ errors }
+    />
     <OrderConfirm />
     <Footer />
     </>

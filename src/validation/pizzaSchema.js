@@ -10,8 +10,8 @@ const pizzaSchema = yup.object().shape({
         .string()
         .oneOf(['white','marinara','pesto','bbq'],'Must select a sauce'),
     size: yup
-        .number()
-        .oneOf([11,14,17],'Must select a size'),
+        .string()
+        .oneOf(['11','14','17'],'Must select a size'),
     pepperoni: yup
         .boolean(),
     mushrooms: yup
