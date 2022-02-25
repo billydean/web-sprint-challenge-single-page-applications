@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Header () {
 
@@ -6,7 +7,7 @@ function Header () {
         <header>
             <h2>BloomTech Eats</h2>
             <nav>
-                <>Home</>
+                <Link to="/">Home<Link/>
                 <>Contact</>
             </nav>
         </header>
