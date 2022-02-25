@@ -6,6 +6,8 @@ import Footer from './components/Footer';
 import OrderConfirm from './components/OrderConfirm';
 import PizzaForm from './components/PizzaForm';
 import axios from 'axios';
+import * as yup from 'yup';
+import schema from './validation/pizzaSchema.js'
 
 //initial form values
 const initialValues = {
