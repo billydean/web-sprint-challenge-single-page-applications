@@ -1,10 +1,15 @@
 import React from 'react';
 
-function Component () {
+function Header () {
 
     return (
-        <div>
-        </div>
+        <header>
+            <h2>BloomTech Eats</h2>
+            <nav>
+                <>Home</>
+                <>Contact</>
+            </nav>
+        </header>
     )
 }
-export default Component;
+export default Header;

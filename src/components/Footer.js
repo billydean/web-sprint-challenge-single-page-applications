@@ -1,10 +1,13 @@
 import React from 'react';
 
-function Component () {
+function Footer () {
 
     return (
-        <div>
-        </div>
+        <footer>
+            <>Billy Dean</>
+            <>Email</>
+            <>Github</>
+        </footer>
     )
 }
-export default Component;
+export default Footer;
