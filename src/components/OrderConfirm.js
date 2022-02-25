@@ -5,7 +5,11 @@ function OrderConfirm () {
     const [order, setOrder] = useState({})
     axios.get('https://reqes.in/api/orders')
         .then(response =>{
+            console.log(response);
+            setOrder(response);
         })
+        .catch(err => console.error(err));
+    console.log(order);
     return (
         <div>
             <h2>I'm so proud of you.</h2>

@@ -7,7 +7,7 @@ function Header () {
         <header>
             <h2>BloomTech Eats</h2>
             <nav>
-                <Link to="/">Home<Link/>
+                <Link to="/">Home</Link>
                 <>Contact</>
             </nav>
         </header>

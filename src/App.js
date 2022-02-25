@@ -1,6 +1,5 @@
 import React, { useState,useEffect } from "react";
 import Header from './components/Header';
-import Banner from './components/Banner';
 import BoxContainer from './components/BoxContainer';
 import Footer from './components/Footer';
 import OrderConfirm from './components/OrderConfirm';
@@ -8,7 +7,7 @@ import PizzaForm from './components/PizzaForm';
 import axios from 'axios';
 import * as yup from 'yup';
 import schema from './validation/pizzaSchema.js'
-import { Route } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 
 //initial form values
 const initialValues = {
@@ -50,6 +49,7 @@ const App = () => {
   const placeOrder = pizzaWish => {
     axios.post('https://reqres.in/api/orders', pizzaWish)
       .then(() => {
+        console.log(pizzaWish);
         setFormValues(initialValues);
       })
       .catch(err => console.error(err))
@@ -102,11 +102,15 @@ const App = () => {
   return (
     <>
       <Header />
-      <Banner />
       <Route exact path="/">
+      <div className="home-bg">
+    <h1>Your favorite food, delivered while coding</h1>
+    <Link to="/pizza">Pizza?</Link>
+          </div>
           <BoxContainer />
       </Route>
       <Route path="/pizza">
+        <div className="pizza-bg"></div>
         <PizzaForm 
           values={ formValues }
           change={ updateForm }
@@ -116,6 +120,9 @@ const App = () => {
         />
       </Route>
       <Route path="/confirmed">
+      <div className="confirm-bg">
+    <h1>Congrats! Pizza is on its way!</h1>
+</div>
         <OrderConfirm />
       </Route>
       <Footer />
@@ -124,6 +131,7 @@ const App = () => {
 };
 export default App;
 
+{/* div changes background depending on Route! is that possible? */}
 /**
  * 
  *             <label className ="">Choice of Size
