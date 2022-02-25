@@ -58,7 +58,8 @@ const App = () => {
     yup.reach(schema, name)
       .validate(value)
       .then(()=> setErrors({ ...errors, [name]:''}))
-      .catch(err => setErrors({ ...errors, [name]: err.errors[0]}))
+      .catch(err => {
+        setErrors({ ...errors, [name]: err.errors[0]})})
   }
   //changing form values
   const updateForm = (name, value) => {
@@ -66,7 +67,7 @@ const App = () => {
     setFormValues({
       ...formValues,
       [name]: value
-    })
+    });
   }
   // when user submits order, this stages the form input to be placed by helper above
   const stageOrder = () => {
@@ -88,6 +89,7 @@ const App = () => {
       glutensub: formValues.glutensub,
       quantity: formValues.quantity
     };
+    console.log(pizza);
     placeOrder(pizza);
   }
   //side effect hook for toggling button's disabled status

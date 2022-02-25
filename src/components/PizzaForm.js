@@ -5,7 +5,7 @@ function PizzaForm (props) {
     const { values, change, submit, disabled, errors } = props;
     const update = evt => {
         const { name, value, type, checked } = evt.target;
-        const useValue = type === 'checked' ? checked : value;
+        const useValue = type === 'checkbox' ? checked : value;
         change(name, useValue);
     }
     const onSubmit = evt => {
@@ -24,45 +24,16 @@ function PizzaForm (props) {
                     <option value="17">XLarge - 17"</option>
                 </select>
             </label>
-            <div className ="">Choice of Sauce
+            <label>Choice of Sauce
                 <p>Required</p>
-                <label>
-                    <input 
-                        name="sauce"
-                        type="radio"
-                        value="marinara"
-                        onChange={ update }
-                    />
-                    Marinara
-                </label>
-                <label>
-                    <input 
-                        name="sauce"
-                        type="radio"
-                        value="white"
-                        onChange={ update }
-                    />
-                    White
-                </label>
-                <label>
-                    <input 
-                        name="sauce"
-                        type="radio"
-                        value="pesto"
-                        onChange={ update }
-                    />
-                    Pesto
-                </label>
-                <label>
-                    <input 
-                        name="sauce"
-                        type="radio"
-                        value="bbq"
-                        onChange={ update }
-                    />
-                    BBQ
-                </label>
-            </div>
+                <select name="sauce" value={ values.sauce }onChange={ update }>
+                    <option value="">--Sauce Options--</option>
+                    <option value="marinara">Marinara</option>
+                    <option value="white">White</option>
+                    <option value="pesto">Pesto</option>
+                    <option value="bbq">BBQ</option>
+                </select>
+            </label>
             <div className ="toppings">Add Toppings
                 <p>Choose up to 10</p>
                 <label>
@@ -157,20 +128,49 @@ function PizzaForm (props) {
                 </label>
             </div>
             <label className ="">Substitutions
-                {/* checkbox */}
+                <input 
+                    name="glutensub"
+                    type="checkbox"
+                    checked={ values.glutensub }
+                    onChange={ update }
+                />
             </label>
             <label className ="">Special Instructions
-                {/* text */}
+                <input
+                    id="special-text" 
+                    name="special"
+                    type="text"
+                    onChange={ update }
+                    placeholder="Any special requests?"
+                    value={ values.special }
+                />
             </label>
             <label className ="">Name for the Order
-                {/* text */}
+                <input
+                    id="name-input" 
+                    name="name"
+                    type="text"
+                    onChange={ update }
+                    placeholder="Enter name"
+                    value={ values.name }
+                />
             </label>
             <div>
                 <label className ="">Quantity
-                    {/* number */}
+                    <input 
+                        name="quantity"
+                        type="number"
+                        min="1"
+                        onChange={ update }
+                    />
                 </label>
                 <p>Cost: { cost }</p>
                 <button id="order-button" disabled={ disabled }>Add to Order</button>
+            </div>
+            <div className="errors">
+                <div>{ errors.name }</div>
+                <div>{ errors.size }</div>
+                <div>{ errors.sauce }</div>
             </div>
         </form>
     )
