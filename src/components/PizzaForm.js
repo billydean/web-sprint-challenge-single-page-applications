@@ -1,33 +1,39 @@
 import React from 'react';
 
-function Component () {
+function PizzaForm () {
     const cost = "";
     return (
         <form id="pizza-form">
             <h2>Build Your Own Pizza</h2>
             <label className ="">Choice of Size
                 <p>Required</p>
-                {//dropdown
+                {/*dropdown*/}
             </label>
             <label className ="">Choice of Sauce
                 <p>Required</p>
-                {//radio buttons
+                {/*radio buttons*/}
             </label>
             <label className ="">Add Toppings
                 <p>Choose up to 10</p>
-                {//checkmarks
+                {/*checkmarks*/}
             </label>
             <label className ="">Substitutions
+                {/* checkbox */}
             </label>
             <label className ="">Special Instructions
+                {/* text */}
             </label>
-            <label className ="">Name for the Order</label>
+            <label className ="">Name for the Order
+                {/* text */}
+            </label>
             <div>
-                <label className ="">Quantity</label>
+                <label className ="">Quantity
+                    {/* number */}
+                </label>
                 <p>Cost: { cost }</p>
                 <button id="order-button">Add to Order</button>
             </div>
         </form>
     )
 }
-export default Component;
+export default PizzaForm;
