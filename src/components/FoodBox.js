@@ -16,4 +16,4 @@ function FoodBox (props) {
         </div>
     )
 }
-export default FoodBox;
+export default FoodBox; 
