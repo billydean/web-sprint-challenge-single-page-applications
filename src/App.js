@@ -8,6 +8,7 @@ import PizzaForm from './components/PizzaForm';
 import axios from 'axios';
 import * as yup from 'yup';
 import schema from './validation/pizzaSchema.js'
+import { Route } from 'react-router-dom';
 
 //initial form values
 const initialValues = {
@@ -100,18 +101,24 @@ const App = () => {
 
   return (
     <>
-    <Header />
-    <Banner />
-    <BoxContainer />
-    <PizzaForm 
-      values={ formValues }
-      change={ updateForm }
-      submit={ stageOrder }
-      disabled={ disabled }
-      errors={ errors }
-    />
-    <OrderConfirm />
-    <Footer />
+      <Header />
+      <Banner />
+      <Route exact path="/">
+          <BoxContainer />
+      </Route>
+      <Route path="/pizza">
+        <PizzaForm 
+          values={ formValues }
+          change={ updateForm }
+          submit={ stageOrder }
+          disabled={ disabled }
+          errors={ errors }
+        />
+      </Route>
+      <Route path="/confirmed">
+        <OrderConfirm />
+      </Route>
+      <Footer />
     </>
   );
 };

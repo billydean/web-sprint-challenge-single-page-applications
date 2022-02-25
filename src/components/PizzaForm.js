@@ -1,7 +1,9 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 
 function PizzaForm (props) {
     const cost = "TBD haha";
+    const history = useHistory();
     const { values, change, submit, disabled, errors } = props;
     const update = evt => {
         const { name, value, type, checked } = evt.target;
@@ -11,6 +13,7 @@ function PizzaForm (props) {
     const onSubmit = evt => {
         evt.preventDefault();
         submit();
+        history.push("/confirmed");
     }
     return (
         <form id="pizza-form" onSubmit={ onSubmit }>
