@@ -44,12 +44,15 @@ const App = () => {
   const [errors, setErrors] = useState(initialErrors);
   //state for disable button
   const [disabled, setDisabled] = useState(initialDisabled);
-
+  // state for displaying order at end
+  const [pizzaWish, setPizzaWish] = useState({})
   // post to api
   const placeOrder = pizzaWish => {
     axios.post('https://reqres.in/api/orders', pizzaWish)
-      .then(() => {
+      .then(res => {
+        setPizzaWish(res.data);
         console.log(pizzaWish);
+        console.log(res.data);
         setFormValues(initialValues);
       })
       .catch(err => console.error(err))
@@ -123,39 +126,11 @@ const App = () => {
       <div className="confirm-bg">
     <h1>Congrats! Pizza is on its way!</h1>
 </div>
-        <OrderConfirm />
+        <OrderConfirm props={ pizzaWish }/>
+
       </Route>
       <Footer />
     </>
   );
 };
 export default App;
-
-{/* div changes background depending on Route! is that possible? */}
-/**
- * 
- *             <label className ="">Choice of Size
-                <p>Required</p>
-                </label>
-                <label className ="">Choice of Sauce
-                    <p>Required</p>
-                </label>
-                <label className ="">Add Toppings
-                    <p>Choose up to 10</p>
-                </label>
-                <label className ="">Substitutions
-                </label>
-                <label className ="">Special Instructions
-                </label>
-                <label className ="">Name for the Order
-        
-                </label>
-                <div>
-                    <label className ="">Quantity
-                  
-                    </label>
-                    <p>Cost: { cost }</p>
-                    <button id="order-button">Add to Order</button>
-                </div>
-            </form>
- */
