@@ -9,6 +9,21 @@ import * as yup from 'yup';
 import schema from './validation/pizzaSchema.js'
 import { Link, Route } from 'react-router-dom';
 
+
+/**
+ * TO ANYONE REVIEWING THIS:
+ *  Yes. I know.
+ *          I know.
+ *  It's very ugly. 
+ *  I got a bit panicked as I got closer to the deadline, so I started to get sloppy (and stopped leaving breadcrumbs for myself or other human beings). 
+ *  It's also "ugly" in the more conventional sense: I didn't get around to stylizing anything. So apologies in advance for assaulting your eyeballs. You don't deserve that. 
+ * 
+ * Any advice would be appreciated! My first priority is to make sure things work, but I want to keep up with best practices / clean code so that I don't drive other people (or myself) crazy. 
+ * 
+ * Best wishes,
+ *    Billy Dean * 
+ */
+
 //initial form values
 const initialValues = {
   name: "",
