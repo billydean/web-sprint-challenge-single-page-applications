@@ -123,7 +123,7 @@ const App = () => {
       <Route exact path="/">
       <div className="home-bg">
     <h1>Your favorite food, delivered while coding</h1>
-    <Link to="/pizza" id="orderPizza">Pizza?</Link>
+    <Link to="/pizza"><button type="button" id="order-pizza">Pizza?</button></Link>
           </div>
           <BoxContainer />
       </Route>
